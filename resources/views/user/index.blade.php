@@ -43,45 +43,6 @@
                 </div>
             </div>
 
-            <!-- User Tasks Modal -->
-            <div class="modal fade" id="user-tasks" tabindex="-1" aria-labelledby="user-tasks-label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="user-tasks-label">
-                                <p id="user-tasks-title">
-                                    Tasks
-                                </p>
-                            </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body" id="user-tasks-table">
-                            <div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($tasks as $task)
-                                        <tr>
-                                            <td class="col-md-3" data-title="title" id="task-title">GG</td>
-                                            <td class="col-md-3" data-desc="desc" id="task-desc">GG</td>
-                                        </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
 
         </div>
         <div class="clearfix"></div>
