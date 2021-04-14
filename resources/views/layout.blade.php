@@ -151,6 +151,7 @@
 
             $("#save-user").show();
             $("#add-user").hide();
+
             var firstname = $(this).data("firstname");
             var lastname = $(this).data("lastname");
             user_id = $(this).data("id");
@@ -236,6 +237,7 @@
         $(document).on("click", "#show-task-modal", function(e) {
             $("#save-task").hide();
             $("#add-task").show();
+            $("#user-for-task").show();
             $('#task-form').trigger("reset");
 
         });
