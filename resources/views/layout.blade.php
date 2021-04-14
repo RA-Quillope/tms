@@ -61,6 +61,7 @@
     $(document).ready(function() {
         let user_id;
         let task_id;
+
         // TASK PAGINATION
         $(document).on('click', '.pagination a', function(event) {
             event.preventDefault();
@@ -104,17 +105,19 @@
 
         // SHOW ADD USER MODAL
         $(document).on("click", "#show-user-modal", function(e) {
+
             $("#save-user").hide();
             $("#add-user").show();
             $('#user-form').trigger("reset");
 
         });
 
-
         // ADD USER
         $(document).on("click", "#add-user", function(e) {
+
             var firstname = $('#firstname').val();
             var lastname = $('#lastname').val();
+
             if (firstname != "" && lastname != "") {
                 $.ajax({
                     url: "/user",
@@ -145,6 +148,7 @@
 
         // SHOW EDIT USER MODAL
         $(document).on("click", "#show-edit-user-modal", function(e) {
+
             $("#save-user").show();
             $("#add-user").hide();
 
@@ -198,8 +202,10 @@
 
         // DELETE USER
         $(document).on('click', "#delete-user", function(e) {
+
             var id = $(this).data("id");
             var token = $("meta[name='csrf-token']").attr("content");
+
             $.ajax({
                 url: "user/" + id,
                 type: 'DELETE',
@@ -231,6 +237,7 @@
         $(document).on("click", "#show-task-modal", function(e) {
             $("#save-task").hide();
             $("#add-task").show();
+            $("#user-for-task").show();
             $('#task-form').trigger("reset");
 
         });
@@ -278,8 +285,6 @@
             $("#save-task").show();
             $("#add-task").hide();
             $("#user-for-task").hide();
-
-
             var title = $(this).data("title");
             var desc = $(this).data("desc");
             task_id = $(this).data("id");
@@ -330,9 +335,10 @@
 
         // DELETE TASK
         $(document).on('click', "#delete-task", function(e) {
+
             var id = $(this).data("id");
             var token = $("meta[name='csrf-token']").attr("content");
-            console.log(token)
+
             $.ajax({
                 url: "task/" + id,
                 type: 'DELETE',
@@ -357,8 +363,6 @@
                 }
             });
         });
-
-
     });
 
 </script>

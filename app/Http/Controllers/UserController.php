@@ -60,7 +60,6 @@ class UserController extends Controller
         );
     }
 
-
     /**
      * Display the specified resource.
      *
@@ -122,7 +121,5 @@ class UserController extends Controller
                 'message' => 'Data inserted successfully'
             ]
         );
-
-        //return redirect()->route('user.index');
     }
 }
