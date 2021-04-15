@@ -66,7 +66,6 @@
         $(document).on('click', '.pagination a', function(event) {
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
-            console.log(page)
             fetch_task_data(page);
         });
 
@@ -145,6 +144,23 @@
                 });
             }
         });
+
+        //SHOW USER TASKS
+        $(document).on("click", "#show-user-tasks", function(e) {
+            e.preventDefault();
+            $('#table-body').empty();
+            var id = $(this).data("id");
+            var url = $(this).data("route");
+            $.ajax({
+                url: url,
+                success: function(data) {
+                    $('#table-body').html(data);
+                }
+            });
+
+
+        });
+
 
         // SHOW EDIT USER MODAL
         $(document).on("click", "#show-edit-user-modal", function(e) {

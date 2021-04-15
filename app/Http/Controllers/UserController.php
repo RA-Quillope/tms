@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Mockery\Undefined;
 
 class UserController extends Controller
 {
@@ -16,8 +17,17 @@ class UserController extends Controller
     public function index()
     {
         $data['users'] = User::orderBy('id', 'desc')->paginate(3);
-        $data['tasks'] = Task::orderBy('id', 'desc')->paginate(3);
+        $data['tasks'] = Task::orderBy('id', 'desc');
         return view('user.index', $data);
+    }
+
+    public function indexUser(Request $request, User $user)
+    {
+
+        //  $user_tasks = User::findOrFail($user->id)->tasks;
+        $users = User::orderBy('id', 'desc')->paginate(3);
+        $tasks = Task::orderBy('id', 'desc');
+        return view('user.index', compact('users', 'tasks'));
     }
 
     public function fetch_user_data(Request $request)
@@ -71,6 +81,24 @@ class UserController extends Controller
         $tasks = User::findOrFail($user->id)->tasks;
         return view('user.show', compact('tasks', 'user'))->render();
     }
+
+    public function getUserTasks($id)
+    {
+        $user_tasks = Task::where('user_id', $id)->get();
+
+        $html = '';
+        foreach($user_tasks as $task){
+            $html .= '<tr>';
+            $html .= '<td>'.$task->title.'</td>';
+            $html .= '<td>'.$task->desc.'</td>';
+            $html .= '</tr>';
+        }
+
+        // echo $html;
+        return $html;
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.

@@ -43,6 +43,48 @@
                 </div>
             </div>
 
+            <!-- User Tasks Modal -->
+            <div class="modal fade" id="user-tasks" tabindex="-1" aria-labelledby="user-tasks-label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="user-tasks-label">Tasks</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('user.store') }}" method="post" id="user-form">
+                                {{ csrf_field() }}
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table-body">
+
+                                        {{-- @foreach ($tasks as $task) --}}
+                                        {{-- <tr id="table">
+                                            <td class="col-md-5">Hello</td>
+                                            <td class="col-md-5"
+                                                style="word-wrap: break-word;min-width: 100px;max-width: 100px;">
+                                                World</td>
+
+                                        </tr> --}}
+                                        {{-- @endforeach --}}
+
+                                    </tbody>
+                                </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="add-user">Add</button>
+                            <button type="button" class="btn btn-primary" id="save-user">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <div class="clearfix"></div>
