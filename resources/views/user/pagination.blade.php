@@ -14,22 +14,26 @@
                 <td class="col-md-3">{{ $user->lastname }}</td>
                 <td class="col-md-3">{{ $user->tasks->count() }}</td>
                 <td class="col-md-3">
-                    <a href="{{ route('user.show', $user->id) }}" type="button" class="btn btn-primary"">
+                    {{-- href="{{ route('user.show', $user->id) }}" --}}
+                    <a type="button" class="btn btn-primary" data-route="{{route('getUserTasks', $user->id)}}" id="show-user-tasks" data-bs-toggle="modal"
+                        data-bs-target="#user-tasks" data-firstname="{{ $user->firstname }}"
+                        data-lastname="{{ $user->lastname }}" data-count="{{ $user->tasks->count() }}"
+                        data-id="{{ $user->id }}">
                         Show
                     </a>
                     <button type=" button" class="btn btn-warning" id="show-edit-user-modal"
                         data-firstname="{{ $user->firstname }}" data-lastname="{{ $user->lastname }}"
                         data-id="{{ $user->id }}">
                         Edit
+                    </button>
+                    <form action="{{ route('user.destroy', [$user]) }}" style="display:inline" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-danger delete" id="delete-user"
+                            data-id="{{ $user->id }}">
+                            Delete
                         </button>
-                        <form action="{{ route('user.destroy', [$user]) }}" style="display:inline" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" class="btn btn-danger delete" id="delete-user"
-                                data-id="{{ $user->id }}">
-                                Delete
-                            </button>
-                        </form>
+                    </form>
                 </td>
             </tr>
         @endforeach

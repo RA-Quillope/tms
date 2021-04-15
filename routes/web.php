@@ -23,3 +23,4 @@ Route::resource('task', TaskController::class);
 
 Route::get('fetch_user_data', [UserController::class, 'fetch_user_data'])->name('fetch_user_data');
 Route::get('fetch_task_data', [TaskController::class, 'fetch_task_data'])->name('fetch_task_data');
+Route::get('getUserTasks/{id}', [UserController::class, 'getUserTasks'])->name('getUserTasks');
